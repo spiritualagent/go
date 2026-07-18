@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex">
+<title>Spiritual Agent</title>
+</head>
+<body style="font-family:sans-serif;text-align:center;margin-top:40px;">
+<p>noteへ移動しています…</p>
+<script>
+  var GAS_URL = "https://script.google.com/macros/s/AKfycbylLLohBZD2T1bLB_mWWokEfV_yawyiZVZRio3zw42OJJAM03LQurEdd4kzDnYdKdD4/exec";
+  var NOTE_URL = "https://note.com/spiritual_agent";
+
+  var src = new URLSearchParams(location.search).get("src") || "unknown";
+
+  // 画像読み込みの形でGASへ記録リクエストを送る(CORSの影響を受けない)
+  var pixel = new Image();
+  pixel.src = GAS_URL + "?src=" + encodeURIComponent(src) + "&t=" + Date.now();
+
+  // 記録リクエストの発射を待ってから遷移(0.3秒)
+  setTimeout(function () {
+    location.replace(NOTE_URL);
+  }, 300);
+</script>
+<noscript>
+  <a href="https://note.com/spiritual_agent">こちらからnoteへ</a>
+</noscript>
+</body>
+</html>
